@@ -1,0 +1,1054 @@
+{
+  "exporter": "export_api_batches/v1",
+  "batch_id": "api-00001",
+  "source_system": "odoo-json2",
+  "database": "olist6",
+  "source_url": "http://127.0.0.1:10000",
+  "mode": "full",
+  "status": "complete",
+  "contract_hash": "d79799b3542cdb0b0395d7c9d3a2d2a8a0ad50c482c5ee84642adeffbad91f64",
+  "company_ids": [
+    1
+  ],
+  "active_test": false,
+  "api_user_id": 2,
+  "previous_batch": null,
+  "previous_manifest_sha256": null,
+  "started_at": "2026-10-07T17:47:11.109192+00:00",
+  "filename_timestamp": "2026-10-07_23_17",
+  "filename_timezone": "Asia/Calcutta",
+  "formats": [
+    "csv",
+    "jsonl"
+  ],
+  "page_size": 10000,
+  "overlap_seconds": 300,
+  "settle_seconds": 0,
+  "checkpoint_clock": "Source HTTP Date header (assumes HTTP server and database clocks agree)",
+  "checkpoint_status": "committed",
+  "publication": "Local landing-zone only; no remote upload performed",
+  "snapshot": "Per-request reads; not a single transactional snapshot",
+  "deletion_semantics": "No hard-delete or filter-exit detection; periodic full replacement/reconciliation required",
+  "late_commit_policy": "Finite settle/overlap window; arbitrarily long transactions require reconciliation",
+  "decimal_encoding": "Decimal strings",
+  "datasets": {
+    "products/products": {
+      "strategy": "full-refresh",
+      "operation": "upsert",
+      "checkpoint_from": null,
+      "read_from": null,
+      "checkpoint_to": "2026-10-07T17:47:11Z",
+      "overlap_seconds": 0,
+      "full_refresh_reason": "Related/computed fields or no exported write_date",
+      "model": "product.product",
+      "rows": 4071
+    },
+    "sales/orders": {
+      "strategy": "write-date",
+      "operation": "upsert",
+      "checkpoint_from": null,
+      "read_from": null,
+      "checkpoint_to": "2026-10-07T17:47:11Z",
+      "overlap_seconds": 0,
+      "full_refresh_reason": null,
+      "model": "sale.order",
+      "rows": 0
+    },
+    "sales/order_lines": {
+      "strategy": "write-date",
+      "operation": "upsert",
+      "checkpoint_from": null,
+      "read_from": null,
+      "checkpoint_to": "2026-10-07T17:47:11Z",
+      "overlap_seconds": 0,
+      "full_refresh_reason": null,
+      "model": "sale.order.line",
+      "rows": 0
+    },
+    "invoicing/invoices": {
+      "strategy": "full-refresh",
+      "operation": "upsert",
+      "checkpoint_from": null,
+      "read_from": null,
+      "checkpoint_to": "2026-10-07T17:47:11Z",
+      "overlap_seconds": 0,
+      "full_refresh_reason": "Related/computed fields or no exported write_date",
+      "model": "account.move",
+      "rows": 0
+    },
+    "invoicing/invoice_lines": {
+      "strategy": "write-date",
+      "operation": "upsert",
+      "checkpoint_from": null,
+      "read_from": null,
+      "checkpoint_to": "2026-10-07T17:47:11Z",
+      "overlap_seconds": 0,
+      "full_refresh_reason": null,
+      "model": "account.move.line",
+      "rows": 0
+    },
+    "payments/payments": {
+      "strategy": "write-date",
+      "operation": "upsert",
+      "checkpoint_from": null,
+      "read_from": null,
+      "checkpoint_to": "2026-10-07T17:47:11Z",
+      "overlap_seconds": 0,
+      "full_refresh_reason": null,
+      "model": "account.payment",
+      "rows": 0
+    },
+    "inventory/quants": {
+      "strategy": "write-date",
+      "operation": "upsert",
+      "checkpoint_from": null,
+      "read_from": null,
+      "checkpoint_to": "2026-10-07T17:47:11Z",
+      "overlap_seconds": 0,
+      "full_refresh_reason": null,
+      "model": "stock.quant",
+      "rows": 0
+    },
+    "purchase/orders": {
+      "strategy": "write-date",
+      "operation": "upsert",
+      "checkpoint_from": null,
+      "read_from": null,
+      "checkpoint_to": "2026-10-07T17:47:11Z",
+      "overlap_seconds": 0,
+      "full_refresh_reason": null,
+      "model": "purchase.order",
+      "rows": 0
+    },
+    "payments/transactions": {
+      "strategy": "write-date",
+      "operation": "upsert",
+      "checkpoint_from": null,
+      "read_from": null,
+      "checkpoint_to": "2026-10-07T17:47:11Z",
+      "overlap_seconds": 0,
+      "full_refresh_reason": null,
+      "model": "payment.transaction",
+      "rows": 0
+    },
+    "payments/allocations": {
+      "strategy": "write-date",
+      "operation": "upsert",
+      "checkpoint_from": null,
+      "read_from": null,
+      "checkpoint_to": "2026-10-07T17:47:11Z",
+      "overlap_seconds": 0,
+      "full_refresh_reason": null,
+      "model": "account.partial.reconcile",
+      "rows": 0
+    },
+    "purchase/order_lines": {
+      "strategy": "write-date",
+      "operation": "upsert",
+      "checkpoint_from": null,
+      "read_from": null,
+      "checkpoint_to": "2026-10-07T17:47:11Z",
+      "overlap_seconds": 0,
+      "full_refresh_reason": null,
+      "model": "purchase.order.line",
+      "rows": 0
+    },
+    "inventory/locations": {
+      "strategy": "write-date",
+      "operation": "upsert",
+      "checkpoint_from": null,
+      "read_from": null,
+      "checkpoint_to": "2026-10-07T17:47:11Z",
+      "overlap_seconds": 0,
+      "full_refresh_reason": null,
+      "model": "stock.location",
+      "rows": 12
+    },
+    "inventory/pickings": {
+      "strategy": "write-date",
+      "operation": "upsert",
+      "checkpoint_from": null,
+      "read_from": null,
+      "checkpoint_to": "2026-10-07T17:47:11Z",
+      "overlap_seconds": 0,
+      "full_refresh_reason": null,
+      "model": "stock.picking",
+      "rows": 0
+    },
+    "inventory/moves": {
+      "strategy": "write-date",
+      "operation": "upsert",
+      "checkpoint_from": null,
+      "read_from": null,
+      "checkpoint_to": "2026-10-07T17:47:11Z",
+      "overlap_seconds": 0,
+      "full_refresh_reason": null,
+      "model": "stock.move",
+      "rows": 0
+    },
+    "reference/currencies": {
+      "strategy": "full-refresh",
+      "operation": "upsert",
+      "checkpoint_from": null,
+      "read_from": null,
+      "checkpoint_to": "2026-10-07T17:47:11Z",
+      "overlap_seconds": 0,
+      "full_refresh_reason": "Related/computed fields or no exported write_date",
+      "model": "res.currency",
+      "rows": 170
+    },
+    "products/categories": {
+      "strategy": "write-date",
+      "operation": "upsert",
+      "checkpoint_from": null,
+      "read_from": null,
+      "checkpoint_to": "2026-10-07T17:47:11Z",
+      "overlap_seconds": 0,
+      "full_refresh_reason": null,
+      "model": "product.category",
+      "rows": 24
+    },
+    "products/supplier_links": {
+      "strategy": "write-date",
+      "operation": "upsert",
+      "checkpoint_from": null,
+      "read_from": null,
+      "checkpoint_to": "2026-10-07T17:47:11Z",
+      "overlap_seconds": 0,
+      "full_refresh_reason": null,
+      "model": "product.supplierinfo",
+      "rows": 8114
+    },
+    "reference/currency_rates": {
+      "strategy": "write-date",
+      "operation": "upsert",
+      "checkpoint_from": null,
+      "read_from": null,
+      "checkpoint_to": "2026-10-07T17:47:11Z",
+      "overlap_seconds": 0,
+      "full_refresh_reason": null,
+      "model": "res.currency.rate",
+      "rows": 0
+    },
+    "inventory/move_lines": {
+      "strategy": "write-date",
+      "operation": "upsert",
+      "checkpoint_from": null,
+      "read_from": null,
+      "checkpoint_to": "2026-10-07T17:47:11Z",
+      "overlap_seconds": 0,
+      "full_refresh_reason": null,
+      "model": "stock.move.line",
+      "rows": 0
+    },
+    "inventory/operation_types": {
+      "strategy": "write-date",
+      "operation": "upsert",
+      "checkpoint_from": null,
+      "read_from": null,
+      "checkpoint_to": "2026-10-07T17:47:11Z",
+      "overlap_seconds": 0,
+      "full_refresh_reason": null,
+      "model": "stock.picking.type",
+      "rows": 8
+    }
+  },
+  "files": [
+    {
+      "path": "csv/products/products/2026-10-07_23_17.csv",
+      "dataset": "products/products",
+      "model": "product.product",
+      "rows": 4071,
+      "columns": [
+        "id",
+        "default_code",
+        "name",
+        "categ_id",
+        "uom_id",
+        "list_price",
+        "create_date",
+        "write_date",
+        "active",
+        "qty_available",
+        "virtual_available",
+        "product_tmpl_id"
+      ],
+      "sha256": "ea7420c58c9f17ffba322a1c79c580de733382484dbd96d89bfaa56c30e3bded"
+    },
+    {
+      "path": "jsonl/products/products/2026-10-07_23_17.jsonl",
+      "dataset": "products/products",
+      "model": "product.product",
+      "rows": 4071,
+      "columns": [
+        "id",
+        "default_code",
+        "name",
+        "categ_id",
+        "uom_id",
+        "list_price",
+        "create_date",
+        "write_date",
+        "active",
+        "qty_available",
+        "virtual_available",
+        "product_tmpl_id"
+      ],
+      "sha256": "1cc6a5979802baf12d3ed894725c818799b8b3e80ba596d2f41292021792516a"
+    },
+    {
+      "path": "csv/sales/orders/2026-10-07_23_17.csv",
+      "dataset": "sales/orders",
+      "model": "sale.order",
+      "rows": 0,
+      "columns": [
+        "id",
+        "name",
+        "partner_id",
+        "date_order",
+        "state",
+        "amount_untaxed",
+        "amount_total",
+        "currency_id",
+        "create_date",
+        "write_date",
+        "company_id",
+        "user_id",
+        "team_id",
+        "client_order_ref",
+        "ops_order_at",
+        "ops_confirmed_at",
+        "ops_unmet_demand",
+        "ops_closed"
+      ],
+      "sha256": "81e971941c46ee0dff84f049160b424a8199ae786a2b1c3c1630c495066e70a3"
+    },
+    {
+      "path": "jsonl/sales/orders/2026-10-07_23_17.jsonl",
+      "dataset": "sales/orders",
+      "model": "sale.order",
+      "rows": 0,
+      "columns": [
+        "id",
+        "name",
+        "partner_id",
+        "date_order",
+        "state",
+        "amount_untaxed",
+        "amount_total",
+        "currency_id",
+        "create_date",
+        "write_date",
+        "company_id",
+        "user_id",
+        "team_id",
+        "client_order_ref",
+        "ops_order_at",
+        "ops_confirmed_at",
+        "ops_unmet_demand",
+        "ops_closed"
+      ],
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "csv/sales/order-lines/2026-10-07_23_17.csv",
+      "dataset": "sales/order_lines",
+      "model": "sale.order.line",
+      "rows": 0,
+      "columns": [
+        "id",
+        "order_id",
+        "product_id",
+        "product_uom_qty",
+        "price_unit",
+        "discount",
+        "price_subtotal",
+        "create_date",
+        "write_date",
+        "qty_delivered",
+        "qty_invoiced"
+      ],
+      "sha256": "5560a14e3e6b8a715bbc4101857864e4390f154ffb8d416f7dc6116179756aca"
+    },
+    {
+      "path": "jsonl/sales/order-lines/2026-10-07_23_17.jsonl",
+      "dataset": "sales/order_lines",
+      "model": "sale.order.line",
+      "rows": 0,
+      "columns": [
+        "id",
+        "order_id",
+        "product_id",
+        "product_uom_qty",
+        "price_unit",
+        "discount",
+        "price_subtotal",
+        "create_date",
+        "write_date",
+        "qty_delivered",
+        "qty_invoiced"
+      ],
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "csv/invoicing/invoices/2026-10-07_23_17.csv",
+      "dataset": "invoicing/invoices",
+      "model": "account.move",
+      "rows": 0,
+      "columns": [
+        "id",
+        "name",
+        "partner_id",
+        "invoice_origin",
+        "invoice_date",
+        "state",
+        "payment_state",
+        "amount_untaxed",
+        "amount_total",
+        "amount_residual",
+        "currency_id",
+        "create_date",
+        "write_date",
+        "move_type",
+        "company_id",
+        "ops_issued_at",
+        "ops_payment_due_at"
+      ],
+      "sha256": "1207cb48b5d71880a1d0a8917049603d606d155a322bbc80ac78fb95abe97edf"
+    },
+    {
+      "path": "jsonl/invoicing/invoices/2026-10-07_23_17.jsonl",
+      "dataset": "invoicing/invoices",
+      "model": "account.move",
+      "rows": 0,
+      "columns": [
+        "id",
+        "name",
+        "partner_id",
+        "invoice_origin",
+        "invoice_date",
+        "state",
+        "payment_state",
+        "amount_untaxed",
+        "amount_total",
+        "amount_residual",
+        "currency_id",
+        "create_date",
+        "write_date",
+        "move_type",
+        "company_id",
+        "ops_issued_at",
+        "ops_payment_due_at"
+      ],
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "csv/invoicing/invoice-lines/2026-10-07_23_17.csv",
+      "dataset": "invoicing/invoice_lines",
+      "model": "account.move.line",
+      "rows": 0,
+      "columns": [
+        "id",
+        "move_id",
+        "product_id",
+        "quantity",
+        "price_unit",
+        "discount",
+        "price_subtotal",
+        "sale_line_ids",
+        "create_date",
+        "write_date",
+        "company_id",
+        "purchase_line_id"
+      ],
+      "sha256": "0f2456d8bc55b1c77687c70e67cac22567404f48876ceb54f2cf5f52ebf672d7"
+    },
+    {
+      "path": "jsonl/invoicing/invoice-lines/2026-10-07_23_17.jsonl",
+      "dataset": "invoicing/invoice_lines",
+      "model": "account.move.line",
+      "rows": 0,
+      "columns": [
+        "id",
+        "move_id",
+        "product_id",
+        "quantity",
+        "price_unit",
+        "discount",
+        "price_subtotal",
+        "sale_line_ids",
+        "create_date",
+        "write_date",
+        "company_id",
+        "purchase_line_id"
+      ],
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "csv/payments/payments/2026-10-07_23_17.csv",
+      "dataset": "payments/payments",
+      "model": "account.payment",
+      "rows": 0,
+      "columns": [
+        "id",
+        "partner_id",
+        "date",
+        "amount",
+        "state",
+        "payment_type",
+        "journal_id",
+        "move_id",
+        "create_date",
+        "write_date",
+        "company_id",
+        "currency_id",
+        "partner_type",
+        "ops_paid_at"
+      ],
+      "sha256": "f420d00ad6e387df3d6a52d74e412c5ede67d1c399fe978ebebe07f6091acdd2"
+    },
+    {
+      "path": "jsonl/payments/payments/2026-10-07_23_17.jsonl",
+      "dataset": "payments/payments",
+      "model": "account.payment",
+      "rows": 0,
+      "columns": [
+        "id",
+        "partner_id",
+        "date",
+        "amount",
+        "state",
+        "payment_type",
+        "journal_id",
+        "move_id",
+        "create_date",
+        "write_date",
+        "company_id",
+        "currency_id",
+        "partner_type",
+        "ops_paid_at"
+      ],
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "csv/inventory/quants/2026-10-07_23_17.csv",
+      "dataset": "inventory/quants",
+      "model": "stock.quant",
+      "rows": 0,
+      "columns": [
+        "id",
+        "product_id",
+        "location_id",
+        "quantity",
+        "reserved_quantity",
+        "write_date",
+        "company_id"
+      ],
+      "sha256": "3c7b4821dd4a74a47666c2774df3acde9f7cca82e8782e61debcd74f9a75e2af"
+    },
+    {
+      "path": "jsonl/inventory/quants/2026-10-07_23_17.jsonl",
+      "dataset": "inventory/quants",
+      "model": "stock.quant",
+      "rows": 0,
+      "columns": [
+        "id",
+        "product_id",
+        "location_id",
+        "quantity",
+        "reserved_quantity",
+        "write_date",
+        "company_id"
+      ],
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "csv/purchase/orders/2026-10-07_23_17.csv",
+      "dataset": "purchase/orders",
+      "model": "purchase.order",
+      "rows": 0,
+      "columns": [
+        "id",
+        "name",
+        "partner_id",
+        "partner_ref",
+        "date_order",
+        "state",
+        "amount_total",
+        "create_date",
+        "write_date",
+        "company_id",
+        "currency_id",
+        "amount_untaxed",
+        "ops_plan_ref"
+      ],
+      "sha256": "534350122a6f4715cd0c941765cd5f1d0454cd9779d4e5ac02ec6d9c98fe27c8"
+    },
+    {
+      "path": "jsonl/purchase/orders/2026-10-07_23_17.jsonl",
+      "dataset": "purchase/orders",
+      "model": "purchase.order",
+      "rows": 0,
+      "columns": [
+        "id",
+        "name",
+        "partner_id",
+        "partner_ref",
+        "date_order",
+        "state",
+        "amount_total",
+        "create_date",
+        "write_date",
+        "company_id",
+        "currency_id",
+        "amount_untaxed",
+        "ops_plan_ref"
+      ],
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "csv/payments/transactions/2026-10-07_23_17.csv",
+      "dataset": "payments/transactions",
+      "model": "payment.transaction",
+      "rows": 0,
+      "columns": [
+        "id",
+        "reference",
+        "provider_id",
+        "payment_method_id",
+        "state",
+        "operation",
+        "amount",
+        "currency_id",
+        "partner_id",
+        "company_id",
+        "payment_id",
+        "is_live",
+        "last_state_change",
+        "create_date",
+        "write_date"
+      ],
+      "sha256": "a3215c72677de7cbd2bc4d0c7b61349559d4fcea384fedb728177a417e8497ef"
+    },
+    {
+      "path": "jsonl/payments/transactions/2026-10-07_23_17.jsonl",
+      "dataset": "payments/transactions",
+      "model": "payment.transaction",
+      "rows": 0,
+      "columns": [
+        "id",
+        "reference",
+        "provider_id",
+        "payment_method_id",
+        "state",
+        "operation",
+        "amount",
+        "currency_id",
+        "partner_id",
+        "company_id",
+        "payment_id",
+        "is_live",
+        "last_state_change",
+        "create_date",
+        "write_date"
+      ],
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "csv/payments/allocations/2026-10-07_23_17.csv",
+      "dataset": "payments/allocations",
+      "model": "account.partial.reconcile",
+      "rows": 0,
+      "columns": [
+        "id",
+        "debit_move_id",
+        "credit_move_id",
+        "amount",
+        "company_id",
+        "create_date",
+        "write_date"
+      ],
+      "sha256": "58b1ef3a317edf94979af1cc8b11e1a31e084a3c766399922ad0db4eb405e44b"
+    },
+    {
+      "path": "jsonl/payments/allocations/2026-10-07_23_17.jsonl",
+      "dataset": "payments/allocations",
+      "model": "account.partial.reconcile",
+      "rows": 0,
+      "columns": [
+        "id",
+        "debit_move_id",
+        "credit_move_id",
+        "amount",
+        "company_id",
+        "create_date",
+        "write_date"
+      ],
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "csv/purchase/order-lines/2026-10-07_23_17.csv",
+      "dataset": "purchase/order_lines",
+      "model": "purchase.order.line",
+      "rows": 0,
+      "columns": [
+        "id",
+        "order_id",
+        "product_id",
+        "product_qty",
+        "price_unit",
+        "price_subtotal",
+        "create_date",
+        "write_date"
+      ],
+      "sha256": "99a1a317eb2aa3b537949f7e558aae2f98fa88fe86c4d941c56ad93f0dc89acd"
+    },
+    {
+      "path": "jsonl/purchase/order-lines/2026-10-07_23_17.jsonl",
+      "dataset": "purchase/order_lines",
+      "model": "purchase.order.line",
+      "rows": 0,
+      "columns": [
+        "id",
+        "order_id",
+        "product_id",
+        "product_qty",
+        "price_unit",
+        "price_subtotal",
+        "create_date",
+        "write_date"
+      ],
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "csv/inventory/locations/2026-10-07_23_17.csv",
+      "dataset": "inventory/locations",
+      "model": "stock.location",
+      "rows": 12,
+      "columns": [
+        "id",
+        "name",
+        "complete_name",
+        "usage",
+        "location_id",
+        "company_id",
+        "active",
+        "write_date"
+      ],
+      "sha256": "84f3f05f2461eaba23e4ca1307d00fffc1cafb2503840a9930f6c10b9c0d4832"
+    },
+    {
+      "path": "jsonl/inventory/locations/2026-10-07_23_17.jsonl",
+      "dataset": "inventory/locations",
+      "model": "stock.location",
+      "rows": 12,
+      "columns": [
+        "id",
+        "name",
+        "complete_name",
+        "usage",
+        "location_id",
+        "company_id",
+        "active",
+        "write_date"
+      ],
+      "sha256": "ecf77f18856a30bc11b7e3b322f066f4600aca56fcfeba04c43a993e1b0152eb"
+    },
+    {
+      "path": "csv/inventory/pickings/2026-10-07_23_17.csv",
+      "dataset": "inventory/pickings",
+      "model": "stock.picking",
+      "rows": 0,
+      "columns": [
+        "id",
+        "name",
+        "partner_id",
+        "state",
+        "origin",
+        "location_id",
+        "location_dest_id",
+        "company_id",
+        "scheduled_date",
+        "date_done",
+        "create_date",
+        "write_date",
+        "picking_type_id",
+        "sale_id",
+        "purchase_id",
+        "ops_warehouse_stage",
+        "ops_handling_seconds"
+      ],
+      "sha256": "bc8ee909836ec9eaa41954f8781cea3411c4cc6b4ca3529d4db0f91f7e04918f"
+    },
+    {
+      "path": "jsonl/inventory/pickings/2026-10-07_23_17.jsonl",
+      "dataset": "inventory/pickings",
+      "model": "stock.picking",
+      "rows": 0,
+      "columns": [
+        "id",
+        "name",
+        "partner_id",
+        "state",
+        "origin",
+        "location_id",
+        "location_dest_id",
+        "company_id",
+        "scheduled_date",
+        "date_done",
+        "create_date",
+        "write_date",
+        "picking_type_id",
+        "sale_id",
+        "purchase_id",
+        "ops_warehouse_stage",
+        "ops_handling_seconds"
+      ],
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "csv/inventory/moves/2026-10-07_23_17.csv",
+      "dataset": "inventory/moves",
+      "model": "stock.move",
+      "rows": 0,
+      "columns": [
+        "id",
+        "product_id",
+        "product_uom_qty",
+        "quantity",
+        "state",
+        "picking_id",
+        "location_id",
+        "location_dest_id",
+        "company_id",
+        "create_date",
+        "write_date",
+        "sale_line_id",
+        "purchase_line_id",
+        "date",
+        "move_orig_ids",
+        "move_dest_ids"
+      ],
+      "sha256": "0c77f2da6aa03c11268d69a47f9bf713a274ee3ef0a09732c64004f0141ddddf"
+    },
+    {
+      "path": "jsonl/inventory/moves/2026-10-07_23_17.jsonl",
+      "dataset": "inventory/moves",
+      "model": "stock.move",
+      "rows": 0,
+      "columns": [
+        "id",
+        "product_id",
+        "product_uom_qty",
+        "quantity",
+        "state",
+        "picking_id",
+        "location_id",
+        "location_dest_id",
+        "company_id",
+        "create_date",
+        "write_date",
+        "sale_line_id",
+        "purchase_line_id",
+        "date",
+        "move_orig_ids",
+        "move_dest_ids"
+      ],
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "csv/reference/currencies/2026-10-07_23_17.csv",
+      "dataset": "reference/currencies",
+      "model": "res.currency",
+      "rows": 170,
+      "columns": [
+        "id",
+        "name",
+        "symbol",
+        "rounding",
+        "active"
+      ],
+      "sha256": "f71d8a38711670c3acfe0980f77dd7d27aa7851baaa451a2feec6f5a8279939a"
+    },
+    {
+      "path": "jsonl/reference/currencies/2026-10-07_23_17.jsonl",
+      "dataset": "reference/currencies",
+      "model": "res.currency",
+      "rows": 170,
+      "columns": [
+        "id",
+        "name",
+        "symbol",
+        "rounding",
+        "active"
+      ],
+      "sha256": "6e0665e0c064bf335dc58caeda2763069e67ad793760e1fb93c8004f610bf621"
+    },
+    {
+      "path": "csv/products/categories/2026-10-07_23_17.csv",
+      "dataset": "products/categories",
+      "model": "product.category",
+      "rows": 24,
+      "columns": [
+        "id",
+        "name",
+        "parent_id",
+        "complete_name",
+        "write_date"
+      ],
+      "sha256": "84f9d604012825d10d77a751c22a92143bb53f236cf1a45946d9898c69f5ef6b"
+    },
+    {
+      "path": "jsonl/products/categories/2026-10-07_23_17.jsonl",
+      "dataset": "products/categories",
+      "model": "product.category",
+      "rows": 24,
+      "columns": [
+        "id",
+        "name",
+        "parent_id",
+        "complete_name",
+        "write_date"
+      ],
+      "sha256": "ebdebeef744169e01477dc004f9f390ab0561ba5efa3d71fc5bd750956eed5af"
+    },
+    {
+      "path": "csv/products/supplier-links/2026-10-07_23_17.csv",
+      "dataset": "products/supplier_links",
+      "model": "product.supplierinfo",
+      "rows": 8114,
+      "columns": [
+        "id",
+        "partner_id",
+        "product_tmpl_id",
+        "product_id",
+        "min_qty",
+        "price",
+        "currency_id",
+        "delay",
+        "write_date"
+      ],
+      "sha256": "c566b2c3118876da7da19b89d5dac9cbfc2baefaa7502ef5408c3f886c122f1b"
+    },
+    {
+      "path": "jsonl/products/supplier-links/2026-10-07_23_17.jsonl",
+      "dataset": "products/supplier_links",
+      "model": "product.supplierinfo",
+      "rows": 8114,
+      "columns": [
+        "id",
+        "partner_id",
+        "product_tmpl_id",
+        "product_id",
+        "min_qty",
+        "price",
+        "currency_id",
+        "delay",
+        "write_date"
+      ],
+      "sha256": "2bd58dd16f479bb5d76a6fc1653bf147a01b6f48d6987a49b4139ab6a42ede38"
+    },
+    {
+      "path": "csv/reference/currency-rates/2026-10-07_23_17.csv",
+      "dataset": "reference/currency_rates",
+      "model": "res.currency.rate",
+      "rows": 0,
+      "columns": [
+        "id",
+        "currency_id",
+        "company_id",
+        "name",
+        "rate",
+        "write_date"
+      ],
+      "sha256": "d9c467ad050f888850556235e3ecfcf5e2ecf64ea83cbcda2706370784cb0f0d"
+    },
+    {
+      "path": "jsonl/reference/currency-rates/2026-10-07_23_17.jsonl",
+      "dataset": "reference/currency_rates",
+      "model": "res.currency.rate",
+      "rows": 0,
+      "columns": [
+        "id",
+        "currency_id",
+        "company_id",
+        "name",
+        "rate",
+        "write_date"
+      ],
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "csv/inventory/move-lines/2026-10-07_23_17.csv",
+      "dataset": "inventory/move_lines",
+      "model": "stock.move.line",
+      "rows": 0,
+      "columns": [
+        "id",
+        "move_id",
+        "picking_id",
+        "product_id",
+        "quantity",
+        "location_id",
+        "location_dest_id",
+        "write_date"
+      ],
+      "sha256": "06a7c3db6f3174e84010c5352ffda50a61fc700daa50159f570479a3d7045141"
+    },
+    {
+      "path": "jsonl/inventory/move-lines/2026-10-07_23_17.jsonl",
+      "dataset": "inventory/move_lines",
+      "model": "stock.move.line",
+      "rows": 0,
+      "columns": [
+        "id",
+        "move_id",
+        "picking_id",
+        "product_id",
+        "quantity",
+        "location_id",
+        "location_dest_id",
+        "write_date"
+      ],
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "csv/inventory/operation-types/2026-10-07_23_17.csv",
+      "dataset": "inventory/operation_types",
+      "model": "stock.picking.type",
+      "rows": 8,
+      "columns": [
+        "id",
+        "name",
+        "code",
+        "warehouse_id",
+        "write_date"
+      ],
+      "sha256": "d6a44aab45f4c726c07e7b49b689faac6a3cd007d240e9ba65c2673c51616ec6"
+    },
+    {
+      "path": "jsonl/inventory/operation-types/2026-10-07_23_17.jsonl",
+      "dataset": "inventory/operation_types",
+      "model": "stock.picking.type",
+      "rows": 8,
+      "columns": [
+        "id",
+        "name",
+        "code",
+        "warehouse_id",
+        "write_date"
+      ],
+      "sha256": "cc909f4d4255c02bfbdc2ead8fc57222273dc6abdde65854d48e03d849ba3370"
+    }
+  ],
+  "contact_dependency": {
+    "batch_id": "contacts-00004",
+    "database": "olist6",
+    "path": "../contacts-00004",
+    "manifest_sha256": "afb54955b4713dc46d2c4153566c8d08174d3f2d422312e2cc1759d689ad82c9"
+  },
+  "validation": "passed",
+  "contact_references_verified": true,
+  "finished_at": "2026-10-07T17:47:13.043257+00:00",
+  "duration_seconds": 1.93
+}
