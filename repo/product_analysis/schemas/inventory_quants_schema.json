@@ -1,0 +1,9 @@
+{
+  "id": "long",
+  "product_id": "string",
+  "location_id": "string",
+  "quantity": "double",
+  "reserved_quantity": "double",
+  "write_date": "timestamp",
+  "company_id": "string"
+}

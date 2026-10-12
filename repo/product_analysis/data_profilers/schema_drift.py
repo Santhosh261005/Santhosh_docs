@@ -4,8 +4,8 @@ HDFS writes, Iceberg audit logging, and reconciliation.
 Assumptions
 -----------
 * Input files are CSV.
-* Good records are written to HDFS as CSV, without cast/alignment to the
-  expected schema. Framework columns are not included in the Bronze output.
+* Good records are written to HDFS as CSV, using the explicit expected schema
+  when supplied. Framework columns are not included in the Bronze output.
 * Corrupt rows and operational events are appended to one Iceberg audit table.
 * Schema drift is informational; parser-corrupt rows alone are rejected.
 """
@@ -217,7 +217,7 @@ def _base_event(run_id, batch_id, dataset_name, source_path, target_path):
     }
 
 
-def _read_csv_with_corrupt_capture(spark, file_path, reader_options):
+def _read_csv_with_corrupt_capture(spark, file_path, reader_options, expected_schema=None, string_columns=()):
     """Infer the file schema, then reread with an explicit corrupt-record field."""
     options = {
         "header": "true",
@@ -234,14 +234,23 @@ def _read_csv_with_corrupt_capture(spark, file_path, reader_options):
 
     inferred = spark.read.options(**options).csv(file_path).schema
     inferred = _schema_without_framework_columns(inferred)
+    capture_base_schema = expected_schema or inferred
+    if expected_schema is not None and string_columns:
+        capture_base_schema = T.StructType([
+            T.StructField(field.name, T.StringType(), field.nullable, field.metadata)
+            if field.name in set(string_columns) else field
+            for field in expected_schema.fields
+        ])
     capture_schema = T.StructType(
-        list(inferred.fields) + [T.StructField(CORRUPT_COLUMN, T.StringType(), True)]
+        list(capture_base_schema.fields)
+        + [T.StructField(CORRUPT_COLUMN, T.StringType(), True)]
     )
 
     # Disabling CSV column pruning ensures Spark materializes malformed-row data
     # even when a later query selects only a subset of columns.
     spark.conf.set("spark.sql.csv.parser.columnPruning.enabled", "false")
-    return spark.read.schema(capture_schema).options(**options).csv(file_path)
+    frame = spark.read.schema(capture_schema).options(**options).csv(file_path)
+    return frame, inferred
 
 
 def process_landing_csv(
@@ -255,6 +264,9 @@ def process_landing_csv(
     batch_id=None,
     reader_options=None,
     write_mode="append",
+    expected_manifest_rows=None,
+    source_files=None,
+    timestamp_false_columns=(),
 ):
     """Process every CSV file under a landing path.
 
@@ -268,7 +280,11 @@ def process_landing_csv(
         raise ValueError("write_mode must be 'append' or 'overwrite'")
 
     ensure_audit_table(spark, audit_table)
-    files = _list_csv_files(spark, landing_path)
+    files = list(source_files) if source_files is not None else _list_csv_files(spark, landing_path)
+    if source_files is not None:
+        for source_file in files:
+            if not _path_exists(spark, source_file):
+                raise FileNotFoundError(source_file)
     if not files:
         raise ValueError(f"No CSV files found under {landing_path}")
 
@@ -287,13 +303,22 @@ def process_landing_csv(
         frame = None
 
         try:
-            frame = _read_csv_with_corrupt_capture(
-                spark, file_path, reader_options
-            ).withColumn(SOURCE_FILE_COLUMN, F.input_file_name())
+            frame, inferred_schema = _read_csv_with_corrupt_capture(
+                spark, file_path, reader_options, expected_schema=expected_schema,
+                string_columns=timestamp_false_columns,
+            )
+            frame = frame.withColumn(SOURCE_FILE_COLUMN, F.input_file_name())
+            for column in timestamp_false_columns:
+                raw_value = F.trim(F.col(column))
+                frame = frame.withColumn(
+                    column,
+                    F.when(F.lower(raw_value).isin("false", "null", "none", ""), F.lit(None).cast("timestamp"))
+                    .otherwise(F.to_timestamp(F.col(column), "yyyy-MM-dd HH:mm:ss")),
+                )
             frame.persist(StorageLevel.MEMORY_AND_DISK)
 
             source_count = frame.count()
-            actual_schema = _schema_without_framework_columns(frame.schema)
+            actual_schema = inferred_schema
             drift = compare_schemas(expected_schema, actual_schema)
 
             good = frame.where(F.col(CORRUPT_COLUMN).isNull()).drop(
@@ -428,6 +453,12 @@ def process_landing_csv(
                 created_at=datetime.utcnow(),
             )
             append_audit_rows(spark, audit_table, [reconciliation])
+
+            if expected_manifest_rows is not None and len(files) == 1 and source_count != int(expected_manifest_rows):
+                raise ValueError(
+                    f"Manifest/source row count mismatch for {file_path}: "
+                    f"manifest={expected_manifest_rows}, actual={source_count}"
+                )
 
             batch_source += source_count
             batch_good += good_count

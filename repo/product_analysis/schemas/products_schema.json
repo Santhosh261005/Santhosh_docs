@@ -1,0 +1,14 @@
+{
+  "id": "long",
+  "default_code": "string",
+  "name": "string",
+  "categ_id": "string",
+  "uom_id": "string",
+  "list_price": "double",
+  "create_date": "timestamp",
+  "write_date": "timestamp",
+  "active": "boolean",
+  "qty_available": "double",
+  "virtual_available": "double",
+  "product_tmpl_id": "string"
+}

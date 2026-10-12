@@ -1,0 +1,20 @@
+{
+  "id": "long",
+  "name": "string",
+  "partner_id": "string",
+  "date_order": "timestamp",
+  "state": "string",
+  "amount_untaxed": "double",
+  "amount_total": "double",
+  "currency_id": "string",
+  "create_date": "timestamp",
+  "write_date": "timestamp",
+  "company_id": "string",
+  "user_id": "string",
+  "team_id": "string",
+  "client_order_ref": "string",
+  "ops_order_at": "timestamp",
+  "ops_confirmed_at": "timestamp",
+  "ops_unmet_demand": "boolean",
+  "ops_closed": "boolean"
+}
