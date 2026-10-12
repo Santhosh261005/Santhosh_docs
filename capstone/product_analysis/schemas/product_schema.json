@@ -1,0 +1,65 @@
+{
+  "table_name": "product",
+  "schema": [
+    {
+      "name": "id",
+      "type": "integer",
+      "nullable": false
+    },
+    {
+      "name": "default_code",
+      "type": "string",
+      "nullable": true
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "nullable": false
+    },
+    {
+      "name": "categ_id",
+      "type": "string",
+      "nullable": true
+    },
+    {
+      "name": "uom_id",
+      "type": "string",
+      "nullable": true
+    },
+    {
+      "name": "list_price",
+      "type": "double",
+      "nullable": true
+    },
+    {
+      "name": "create_date",
+      "type": "timestamp",
+      "nullable": true
+    },
+    {
+      "name": "write_date",
+      "type": "timestamp",
+      "nullable": true
+    },
+    {
+      "name": "active",
+      "type": "boolean",
+      "nullable": true
+    },
+    {
+      "name": "qty_available",
+      "type": "double",
+      "nullable": true
+    },
+    {
+      "name": "virtual_available",
+      "type": "double",
+      "nullable": true
+    },
+    {
+      "name": "product_tmpl_id",
+      "type": "string",
+      "nullable": true
+    }
+  ]
+}
